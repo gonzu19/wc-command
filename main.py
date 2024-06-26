@@ -1,3 +1,6 @@
+import argparse
+
+
 def checkbytes(filename: str) -> int:
     with open(filename, 'rb') as file:
         # Read the entire file content
@@ -45,7 +48,43 @@ def checkdefault(filename: str) -> list:
 
 
 def main() -> None:
-    pass
+    parser = argparse.ArgumentParser(
+                                    description="Count lines, words, "
+                                                "or characters in a file.")
+    parser.add_argument('filename',
+                        type=str,
+                        help='The file to process.'
+                        )
+    parser.add_argument('-l',
+                        '--lines',
+                        action='store_true',
+                        help='Count the number of lines.'
+                        )
+    parser.add_argument('-w',
+                        '--words',
+                        action='store_true',
+                        help='Count the number of words.'
+                        )
+    parser.add_argument('-c',
+                        '--characters',
+                        action='store_true',
+                        help='Count the number of characters.'
+                        )
+
+    args = parser.parse_args()
+
+    if args.lines:
+        print(f"{checklines(args.filename)} {args.filename}")
+    if args.words:
+        print(f"{checkwords(args.filename)} {args.filename}")
+    if args.characters:
+        print(f"{checkcharacters(args.filename)} {args.filename}")
+
+    # If no option is provided, count lines, words, and characters by default
+    if not (args.lines or args.words or args.characters):
+        print(f"{checklines(args.filename)} "
+              f"{checkwords(args.filename)} {checkcharacters(args.filename)} "
+              f"{args.filename}")
 
 
 if '__main__' == __name__:
