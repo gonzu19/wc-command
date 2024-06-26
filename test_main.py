@@ -1,5 +1,6 @@
 import subprocess
-from main import checkbytes, checklines, checkwords, checkcharacters
+from main import (checkbytes, checklines, checkwords, checkcharacters,
+                  checkdefault)
 
 
 filename = 'text.txt'
@@ -34,4 +35,12 @@ def test_characters_count() -> None:
     output = result.stdout.decode('utf-8').split()
     n_original_wc = int(output[0])
     n_custom_wc = checkcharacters(filename)
+    assert n_custom_wc == n_original_wc
+
+
+def test_no_options_wc() -> None:
+    result = subprocess.run(['wc', filename], stdout=subprocess.PIPE)
+    output = result.stdout.decode('utf-8').split()
+    n_original_wc = [int(output[0]), int(output[1]), int(output[2])]
+    n_custom_wc = checkdefault(filename)
     assert n_custom_wc == n_original_wc

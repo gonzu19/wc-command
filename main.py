@@ -7,7 +7,7 @@ def checkbytes(filename: str) -> int:
     return num_bytes
 
 
-def checklines(filename):
+def checklines(filename: str) -> int:
     num_lines = 0
     with open(filename, 'r') as file:
         # Iterate over each line in the file
@@ -16,7 +16,7 @@ def checklines(filename):
     return num_lines
 
 
-def checkwords(filename):
+def checkwords(filename: str) -> int:
     num_words = 0
     with open(filename, 'r') as file:
         # Iterate over each line in the file
@@ -27,7 +27,7 @@ def checkwords(filename):
     return num_words
 
 
-def checkcharacters(filename):
+def checkcharacters(filename: str) -> int:
     num_characters = 0
     with open(filename, 'r') as file:
         # Iterate over each line in the file
@@ -35,6 +35,13 @@ def checkcharacters(filename):
             # Add the length of the line to the character count
             num_characters += len(line)
     return num_characters
+
+
+def checkdefault(filename: str) -> list:
+    n_bytes = checkbytes(filename=filename)
+    n_lines = checklines(filename=filename)
+    n_words = checkwords(filename=filename)
+    return [n_lines, n_words, n_bytes]
 
 
 def main() -> None:
