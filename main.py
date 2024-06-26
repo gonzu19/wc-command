@@ -27,6 +27,16 @@ def checkwords(filename):
     return num_words
 
 
+def checkcharacters(filename):
+    num_characters = 0
+    with open(filename, 'r') as file:
+        # Iterate over each line in the file
+        for line in file:
+            # Add the length of the line to the character count
+            num_characters += len(line)
+    return num_characters
+
+
 def main() -> None:
     pass
 
