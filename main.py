@@ -7,6 +7,26 @@ def checkbytes(filename: str) -> int:
     return num_bytes
 
 
+def checklines(filename):
+    num_lines = 0
+    with open(filename, 'r') as file:
+        # Iterate over each line in the file
+        for _ in file:
+            num_lines += 1
+    return num_lines
+
+
+def checkwords(filename):
+    num_words = 0
+    with open(filename, 'r') as file:
+        # Iterate over each line in the file
+        for line in file:
+            # Split the line into words and count them
+            words = line.split()
+            num_words += len(words)
+    return num_words
+
+
 def main() -> None:
     pass
 
