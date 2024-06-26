@@ -6,8 +6,10 @@ def checkbytes(filename: str) -> int:
         num_bytes = len(content)
     return num_bytes
 
+
 def main() -> None:
     pass
 
+
 if '__main__' == __name__:
-    main()  
+    main()
