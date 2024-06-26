@@ -51,7 +51,6 @@ def main() -> None:
 
     args = parser.parse_args()
 
-
     if args.filename:
         with open(args.filename, 'r') as file:
             file_content = file.readlines()
